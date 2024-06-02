@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E Vote: A Secure and Efficient Online Voting Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: url('https://specials.manoramaonline.com/Onmanorama/2019/how-to-vote/img/polling-offciers/03.gif') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .header {
+            background-color: #0a58ca;
+            padding: 20px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .header img {
+            width: 100px;
+            vertical-align: middle;
+        }
+        .main {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+        .button:hover {
+            transform: scale(1.05);
+        }
+        .commissioner {
+            margin: 20px 0;
+        }
+        .commissioner img {
+            width: 200px;
+            height: auto;
+            border-radius: 50%;
+            border: 3px solid #0a58ca;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .commissioner h2 {
+            color: #0a58ca;
+        }
+        .helpline {
+            background-color: #ffcccb;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background: url('https://image.shutterstock.com/image-vector/robot-icon-chat-bot-sign-260nw-1241060115.jpg') no-repeat center center;
+            background-size: cover;
+            cursor: pointer;
+        }
+        .chatbot:hover {
+            transform: scale(1.1);
+        }
+    </style>
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+        function openChatbot() {
+            alert("Chatbot functionality coming soon!");
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXpVYj5bCJ-YGShcpmWudCeJEMivzS7NptQg&s" alt="Logo">
+        <h1>✔ E Vote: A Secure and Efficient Online Voting Platform</h1>
+    </div>
+    <div class="main">
+        <p>VERSION 1.0</p>
+        <button class="button" onclick="navigateTo('registration.html')">REGISTRATION</button>
+        <button class="button" onclick="navigateTo('gate.html')">Login</button>
+        <button class="button" onclick="navigateTo('candidate_list.html')">Candidate List</button>
+        <button class="button" onclick="navigateTo('vote.html')">vote</button>
+        <button class="button" onclick="navigateTo('admin.html')">admin</button>
+        <div class="commissioner">
+            <h2>Election Commissioners</h2>
+            <p>Gyanesh Kumar</p>
+            <img src="https://c.ndtvimg.com/2024-03/56pnr7u_gyanesh-kumar_625x300_14_March_24.jpg" alt="Gyanesh Kumar">
+            <p>Sukbhir Singh Sandhu</p>
+            <img src="https://pbs.twimg.com/media/EH90ViwUYAE7Cp2.jpg" alt="Sukbhir Singh Sandhu">
+            <p>Arun Goel</p>
+            <img src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-23310,resizemode-75,msid-108550810/news/india/ec-arun-goel-quit-due-to-personal-reasons-we-must-respect-personal-space-cec.jpg" alt="Arun Goel">
+        </div>
+        
+        <div class="helpline">
+            <h3>Helpline Numbers</h3>
+            <p>For support, call: +91 12345 67890</p>
+            <p>Email: support@evote.com</p>
+        </div>
+    </div>
+    <div class="footer">
+        © 2024 Evote.com. All rights reserved.
+    </div>
+    <div class="chatbot" onclick="openChatbot()"></div>
+</body>
+</html>

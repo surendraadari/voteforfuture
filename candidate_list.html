@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .candidate-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .candidate-card img {
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .candidate-info {
+            flex-grow: 1;
+        }
+        .candidate-name {
+            font-size: 1.5em;
+            margin: 0;
+        }
+        .candidate-party {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Candidate List</h1>
+</div>
+
+<div class="container">
+    <div class="candidate-card">
+        <img src="candidate1.jpg" alt="Candidate 1" width="100">
+        <div class="candidate-info">
+            <h2 class="candidate-name">Candidate 1</h2>
+            <p class="candidate-party">Party: ABC</p>
+        </div>
+    </div>
+
+    <div class="candidate-card">
+        <img src="candidate2.jpg" alt="Candidate 2" width="100">
+        <div class="candidate-info">
+            <h2 class="candidate-name">Candidate 2</h2>
+            <p class="candidate-party">Party: XYZ</p>
+        </div>
+    </div>
+
+    <div class="candidate-card">
+        <img src="candidate3.jpg" alt="Candidate 3" width="100">
+        <div class="candidate-info">
+            <h2 class="candidate-name">Candidate 3</h2>
+            <p class="candidate-party">Party: LMN</p>
+        </div>
+    </div>
+
+    <div class="candidate-card">
+        <img src="candidate4.jpg" alt="Candidate 4" width="100">
+        <div class="candidate-info">
+            <h2 class="candidate-name">Candidate 4</h2>
+            <p class="candidate-party">Party: AMN</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

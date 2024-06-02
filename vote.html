@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting System</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 2em;
+            background-color: #000;
+        }
+
+        header .logo {
+            font-size: 1.5em;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5em;
+            font-size: 1em;
+        }
+
+        main {
+            text-align: center;
+            padding: 2em 0;
+        }
+
+        main h1 {
+            font-size: 2.5em;
+            margin-bottom: 1em;
+        }
+
+        .candidates {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .candidate {
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 10px;
+            margin: 1em;
+            padding: 2em;
+            text-align: center;
+            width: 200px;
+        }
+
+        .candidate h2 {
+            font-size: 1.5em;
+            margin-bottom: 1em;
+        }
+
+        .vote-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .vote-btn:hover {
+            background-color: #45a049;
+        }
+
+        .vote-btn:disabled {
+            background-color: #888;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">✔️E Vote.com</div>
+        <nav>
+            <a href="pollresults.html">Poll Results</a>
+            <a href="#">Poll Settings</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>VOTING SYSTEM</h1>
+        <div class="candidates">
+            <div class="candidate">
+                <h2>Candidate1</h2>
+                <button class="vote-btn" onclick="vote('Candidate1')">Vote 👍</button>
+            </div>
+            <div class="candidate">
+                <h2>Candidate2</h2>
+                <button class="vote-btn" onclick="vote('Candidate2')">Vote 👍</button>
+            </div>
+            <div class="candidate">
+                <h2>Candidate3</h2>
+                <button class="vote-btn" onclick="vote('Candidate3')">Vote 👍</button>
+            </div>
+            <div class="candidate">
+                <h2>Candidate 4</h2>
+                <button class="vote-btn" onclick="vote('Candidate 4')">Vote 👍</button>
+            </div>
+            <div class="candidate">
+                <h2>Candidate 5</h2>
+                <button class="vote-btn" onclick="vote('Candidate 5')">Vote 👍</button>
+            </div>
+            <div class="candidate">
+                <h2>Candidate 6</h2>
+                <button class="vote-btn" onclick="vote('Candidate 6')">Vote 👍</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function vote(candidate) {
+            alert('You voted for ' + candidate);
+            const buttons = document.querySelectorAll('.vote-btn');
+            buttons.forEach(button => button.disabled = true);
+        }
+    </script>
+</body>
+</html>

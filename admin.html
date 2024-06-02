@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Insert Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .admin-container {
+            background-color: white;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .admin-container h1 {
+            margin-bottom: 1em;
+        }
+        .admin-container input, select {
+            width: 100%;
+            padding: 0.5em;
+            margin-bottom: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .admin-container button {
+            width: 100%;
+            padding: 0.5em;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .admin-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js"></script>
+    <script>
+        // Firebase configuration for candidate registration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAatwn01exFAu3YlJXZAlNUd3HrtGzWvRA",
+  authDomain: "candidate-regis.firebaseapp.com",
+  databaseURL: "https://candidate-regis-default-rtdb.firebaseio.com",
+  projectId: "candidate-regis",
+  storageBucket: "candidate-regis.appspot.com",
+  messagingSenderId: "974002340241",
+  appId: "1:974002340241:web:f6c130d99df1fcb93bda30",
+  measurementId: "G-RH928JN8TS"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        function insertData() {
+            const state = document.getElementById('state').value;
+            const district = document.getElementById('district').value;
+            const constituency = document.getElementById('constituency').value;
+            const numCandidates = parseInt(document.getElementById('numCandidates').value);
+
+            let candidates = [];
+            for (let i = 1; i <= numCandidates; i++) {
+                const candidateName = document.getElementById(candidateName${i}).value;
+                const partySymbol = document.getElementById(partySymbol${i}).value;
+                candidates.push({ name: candidateName, partySymbol: partySymbol });
+            }
+
+            db.collection('elections').add({
+                state: state,
+                district: district,
+                constituency: constituency,
+                candidates: candidates
+            })
+            .then(() => {
+                alert('Data added successfully');
+                resetForm();
+            })
+            .catch(error => {
+                alert(error.message);
+            });
+        }
+
+        function resetForm() {
+            document.getElementById('state').value = '';
+            document.getElementById('district').value = '';
+            document.getElementById('constituency').value = '';
+            document.getElementById('numCandidates').value = '';
+            const candidatesContainer = document.getElementById('candidatesContainer');
+            candidatesContainer.innerHTML = '';
+        }
+
+        function createCandidateInputs() {
+            const numCandidates = parseInt(document.getElementById('numCandidates').value);
+            const candidatesContainer = document.getElementById('candidatesContainer');
+            candidatesContainer.innerHTML = '';
+
+            for (let i = 1; i <= numCandidates; i++) {
+                const candidateNameInput = document.createElement('input');
+                candidateNameInput.type = 'text';
+                candidateNameInput.id = candidateName${i};
+                candidateNameInput.placeholder = Candidate ${i} Name;
+                candidateNameInput.required = true;
+                candidatesContainer.appendChild(candidateNameInput);
+
+                const partySymbolInput = document.createElement('input');
+                partySymbolInput.type = 'text';
+                partySymbolInput.id = partySymbol${i};
+                partySymbolInput.placeholder = Party Symbol ${i};
+                partySymbolInput.required = true;
+                candidatesContainer.appendChild(partySymbolInput);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Admin - Insert Data</h1>
+        <select id="state" required>
+            <option value="" disabled selected>Select State</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+            <option value="Daman and Diu">Daman and Diu</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Lakshadweep">Lakshadweep</option>
+            <option value="Puducherry">Puducherry</option>
+        </select>
+        <input type="text" id="district" placeholder="District" required>
+        <input type="text" id="constituency" placeholder="Constituency" required>
+        <input type="number" id="numCandidates" placeholder="Number of Candidates" required min="1" max="10" oninput="createCandidateInputs()">
+        <div id="candidatesContainer"></div>
+        <button onclick="insertData()">Insert Data</button>
+    </div>
+</body>
+</html>

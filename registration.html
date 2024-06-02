@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Registration</title>
+    <!-- Cool Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+    <!-- Our stylesheet -->
+    <style>
+        body {
+            background: url('https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Bowlby One SC', cursive;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Voter Registration</h2>
+        <form id="registrationForm">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="voterId" placeholder="Voter ID" required>
+            <input type="text" id="mobile" placeholder="Mobile Number" required>
+            <input type="email" id="email" placeholder="Email (Login ID)" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="date" id="dob" placeholder="Date of Birth" required>
+            <button type="submit">Register</button>
+            <button type="button" onclick="navigateToLogin()" style="padding: 10PX;">LOGIN</button>
+        </form>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAR-UBKpOm1rC7f7ttcbyihyGpVXTFzW8A",
+            authDomain: "voter-regis.firebaseapp.com",
+            projectId: "voter-regis",
+            storageBucket: "voter-regis.appspot.com",
+            messagingSenderId: "8654840978",
+            appId: "1:8654840978:web:589d4b06a47f775eab324b",
+            measurementId: "G-QV84YZLMNS"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Initialize variables
+        const auth = firebase.auth();
+        const database = firebase.database();
+
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const voterId = document.getElementById('voterId').value;
+            const mobile = document.getElementById('mobile').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const dob = document.getElementById('dob').value;
+            
+            const age = new Date().getFullYear() - new Date(dob).getFullYear();
+
+            if (age < 18) {
+                alert('You must be 18 years or older to register.');
+                return;
+            }
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(function(userCredential) {
+                    var user = userCredential.user;
+                    var userData = {
+                        name: name,
+                        voterId: voterId,
+                        mobile: mobile,
+                        email: email,
+                        dob: dob
+                    };
+
+                    var databaseRef = database.ref('voters/' + voterId);
+                    return databaseRef.set(userData);
+                })
+                .then(function() {
+                    alert('Voter registered successfully!');
+                    document.getElementById('registrationForm').reset();
+                })
+                .catch(function(error) {
+                    var errorMessage = error.message;
+                    alert(errorMessage);
+                });
+        });
+
+        function navigateToLogin() {
+            window.location.href = 'gate.html';
+        }
+    </script>
+</body>
+</html>
